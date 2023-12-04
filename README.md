@@ -34,5 +34,5 @@ feature requests.
 
 The `heria` class is distributed under the conditions of the [LaTeX
 Project Public License](https://www.latex-project.org/lppl.txt),
-either version 1.3 of this license or (at your option) any later
+either version 1.3c of this license or (at your option) any later
 version.
