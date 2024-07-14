@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
-% Copyright 2023 Tristan Miller
-% -----------------------------
+% Copyright 2023, 2024 Tristan Miller
+% -----------------------------------
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -18,7 +18,7 @@
 \ProvidesFile{heria.dtx}
 %</driver>
 %<*class>
-%% Copyright 2023 Tristan Miller
+%% Copyright 2023, 2024 Tristan Miller
 %% Copyright 2016 John Kormylo
 %%
 %% This work may be distributed and/or modified under the
@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{heria}
 %<*class>
-[2023-12-04 v3.2.1.0 Class for Horizon Europe (R)IA proposals]
+[2024-07-14 v3.4.1.0 Class for Horizon Europe (R)IA proposals]
 %</class>
 %
 %<*driver>
@@ -50,7 +50,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1506}
+% \CheckSum{1520}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -80,8 +80,9 @@
 % for an explanation of the versioning scheme.}}
 %
 % \author{Tristan Miller\\
-% Austrian Research Institute for Artificial Intelligence\\
-% \texttt{tristan.miller@ofai.at}}
+% Department of Computer Science\\
+% University of Manitoba\\
+% \texttt{Tristan.Miller@umanitoba.ca}}
 %
 % \maketitle
 % \tableofcontents
@@ -104,14 +105,9 @@
 % the user.  The advantage of this becomes clear when one considers
 % that much of the data is reused across multiple tables.
 %
-% At the time of writing (2023-12-04), open calls to the RIA and IA
-% calls require proposals to be submitted according to either
-% Version~3.2 (2022-11-15) or Version~3.3 (2023-09-27) of the Part~B
-% template.  The \textsf{heria} package was developed with reference
-% to the Version~3.2 template; however, according to the changelog for
-% the Version~3.3 template, the only difference from the previous
-% version is the addition of some instructions concerning the use of
-% generative AI tools for the preparation of the proposal.
+% The \textsf{heria} package can be used to write proposals using
+% either Version~3.2 (2022-11-15), 3.3 (2023-09-27), or 3.4
+% (2024-04-04) of the official Part~B template.
 %
 % \section{Usage}
 %
@@ -140,8 +136,20 @@
 %
 % \medskip
 %
-% \noindent Following \cs{documentclass} you should provide the
-% proposal metadata using the following macros:
+% \noindent Following \cs{documentclass} you should tell
+% \textsf{heria} which version of the official Part~B template you
+% want to use:
+%
+% \DescribeMacro{\templateversion} This macro sets the version of the
+% official Part~B template the proposal should use.  It takes a single
+% argument; valid values are \verb|3.2|, \verb|3.3|, and \verb|3.4|.
+% If you omit this macro, \textsf{heria} will default to using the
+% latest version of the template.
+%
+% \medskip
+%
+% \noindent You should then provide the proposal metadata using the
+% following macros:
 %
 % \DescribeMacro{\title} This macro takes the title of the proposal as
 % its sole argument.  This title will be printed by the \cs{maketitle}
@@ -446,18 +454,6 @@
 %
 % \section{Limitations and caveats}
 %
-% \paragraph{No backward compatibility.} This version of the
-% \textsf{heria} class implements a specific version of the official
-% Horizon Europe template as described in §\ref{sec:introduction}. It
-% is intended that \textsf{heria}, over the course of its development,
-% will track changes made to the official template. Since these
-% changes may be incompatible with previous versions, you are advised
-% to retain a copy of the version of \textsf{heria} you used to
-% produce a proposal; this way you will still be able to build the
-% proposal even if you later install a new version of \textsf{heria}.
-% See §\ref{sec:version} for further information on \textsf{heria}'s
-% versioning scheme and when to expect breaking changes.
-%
 % \paragraph{Table 3.1h.} The instructions in the official template
 % are ambiguous about the construction of the tables for purchase
 % costs.  In particular, it's not clear whether each individual cost
@@ -497,21 +493,26 @@
 %
 % Each release of the \textsf{heria} class carries a version number in
 % the format \textit{omaj.\allowbreak omin.\allowbreak maj.\allowbreak
-% min}. Here \textit{omaj.omin} is the version number of the official
-% Horizon Europe RIA template that the class implements, and
+% min}. Here \textit{omaj.omin} is the highest version number of the
+% official Horizon Europe RIA template that the class implements, and
 % \textit{maj} and \textit{min} represent, respectively, major and
 % minor revisions to the class (including any ancillary files, such as
 % the skeleton proposal and documentation).  A major revision is one
-% that includes breaking changes or significant new features; minor
-% revisions are for all other changes. You should generally assume
-% that any change to \textit{omaj.omin} introduces breaking changes to
-% the class interface and\slash or significant changes to the official
-% proposal preparation instructions.
+% that includes potentially breaking changes or significant new
+% features; minor revisions are for all other changes.  While efforts
+% will be made to preserve compatibility with earlier versions of the
+% official template (via the \cs{templateversion} macro), any change
+% to \textit{omaj.omin} could unavoidably introduce breaking changes
+% to the class interface.  Any such changes will be noted in the
+% package documentation.
 %
 % \subsection{Version history}
 %
 % \begin{description}
-%   \item[v3.2.1.0 (2023-12-04)] Initial release.
+% \item[v3.4.1.0 (2024-07-14)] Add support for version 3.4 of the
+%   official Part~B template and the \cs{templateversion} macro for
+%   backward compatibility with earlier versions.
+% \item[v3.2.1.0 (2023-12-04)] Initial release.
 % \end{description}
 %
 % \section{Disclaimer}
@@ -599,6 +600,22 @@
 \definecolor{summaryblue}{HTML}{00B0F0}
 %    \end{macrocode}
 %
+% \subsection*{Set official Horizon Europe template version}
+%
+%    \begin{macrocode}
+\gdef\@templateversion{3.4} % Default version
+\def\@supportedtemplateversions{3.2,3.3,3.4} % Supported versions
+\ExplSyntaxOn
+\NewDocumentCommand{\templateversion}{m}{%
+ \clist_if_in:NnTF {\@supportedtemplateversions} {#1}
+   {\gdef\@templateversion{#1}}
+   {\PackageError{heria}%
+     {unsupported~template~version}%
+     {Use~one~of~\@supportedtemplateversions}
+   }%
+}
+\ExplSyntaxOff
+%    \end{macrocode}
 % \subsection*{Basic proposal variables}
 %
 %    \begin{macrocode}
@@ -1459,7 +1476,6 @@
 % communication with Tristan Miller on 2023-12-02.
 % 
 %    \begin{macrocode}
-\RequirePackage{everypage}
 \RequirePackage{environ}
 \newcounter{abspage}% \thepage not reliab
 \newcommand{\newSFPage}[1]% #1 = \theabspage
@@ -1474,15 +1490,17 @@
   \rotatebox{90}{\parbox[c][\textwidth][c]{\textheight}{\BODY}}%
 \fi
 \end{figure}}
-\AddEverypageHook{% check if sideways figure on this page
-  \ifdim\textwidth=\textheight
-    \stepcounter{abspage}% already in landscape
-  \else
-    \@ifundefined{SFPage@\theabspage}{}{\global\pdfpageattr{/Rotate 0}}%
-    \stepcounter{abspage}%
-    \@ifundefined{SFPage@\theabspage}{}%
-      {\global\pdfpageattr{/Rotate 90}}%
-  \fi}
+\AddToHook{shipout/background}{% check if sideways figure on this page
+  \put(1in,-1in){%
+    \ifdim\textwidth=\textheight
+      \stepcounter{abspage}% already in landscape
+    \else
+      \@ifundefined{SFPage@\theabspage}{}{\global\pdfpageattr{/Rotate 0}}%
+      \stepcounter{abspage}%
+      \@ifundefined{SFPage@\theabspage}{}%
+        {\global\pdfpageattr{/Rotate 90}}%
+    \fi}%
+    }
 %    \end{macrocode}
 %
 % \subsection*{Font setup}
@@ -1987,7 +2005,7 @@ purchase costs for equipment).
   environmental objectives of the EU Taxonomy Regulation.}
 \item
   \emph{If you plan to use, develop and/or deploy artificial
-  intellingence (AI) based systems and/or techniques you must
+  intelligence (AI) based systems and/or techniques you must
   demonstrate their technical robustness. AI-based systems or techniques
   should be, or be developed to become:~}
 
@@ -2371,12 +2389,33 @@ Please provide the following:
 \item
   \emph{Give full details. Base your account on the logical structure of
   the project and the stages in which it is to be carried out.}
+\makeatletter
+\ifdim\@templateversion pt<3.4pt
   \emph{The number of work packages should be proportionate to the scale
   and complexity of the project.}
 \item
   \emph{You should give enough detail in each work package to justify
   the proposed resources to be allocated and also quantified information
   so that progress can be monitored, including by the Commission}
+\else
+  \emph{Each work package should be a substantial part of the work
+    plan, and the number of work packages should be proportionate to
+    the scale and complexity of the project.}
+\item \emph{Structure each work package by breaking it down into
+    tasks. If tasks are not appropriate, work packages can be
+    organised according to other criteria (e.g., according to the type
+    of work or thematically). For each task or element of the work
+    package, describe all activities to be carried out and quantify
+    them (e.g., number of protocols, tests, measurements,
+    combinations, study subjects, conferences, publications,
+    etc.). Provide enough detail to clarify who will do this work and
+    why it is needed for the project, (e.g., the level of
+    qualification and number of person-months for personnel, as well
+    as the requested equipment, consumables, meetings, etc.), to
+    justify the proposed resources and so that progress can be
+    monitored, including by the Commission.}
+\fi
+\makeatother
 \item
   \emph{Resources assigned to work packages should be in line with their
   objectives and deliverables. You are advised to include a distinct
@@ -2431,9 +2470,15 @@ Please provide the following:
 \end{itemize}
 %</hi-workplan>
 %<*hi-wp-description>
+\makeatletter
+\ifdim\@templateversion pt<3.4pt
 (where appropriate, broken down into tasks), lead partner and role of
 participants. Deliverables linked to each WP are listed in table 3.1c
 (no need to repeat the information here).
+\else
+(where appropriate, broken down into tasks), lead partner and role of participants. For each task, quantify the amount of work. Provide enough detail to justify the resources requested and clarify why the work is needed and who will do it. Deliverables linked to each WP are listed in table 3.1c (no need to repeat the information here).
+\fi
+\makeatother
 %</hi-wp-description>
 %<*hi-wp-objectives>
 \twarn \emph{Participants involved in each WP and their efforts are
@@ -2441,7 +2486,7 @@ participants. Deliverables linked to each WP are listed in table 3.1c
   each WP are shown in table 3.1a.)}
 %</hi-wp-objectives>
 %<*heria-proposal>
-%% Copyright 2023 Tristan Miller
+%% Copyright 2023, 2024 Tristan Miller
 %%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -2452,6 +2497,8 @@ participants. Deliverables linked to each WP are listed in table 3.1c
 %% version 2008 or later.
 %%
 \documentclass[showinstructions]{heria}
+
+\templateversion{3.4}
 
 \title{Skeleton Horizon Europe Proposal}
 \callname{insert call name}
