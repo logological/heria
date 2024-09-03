@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{heria}
 %<*class>
-[2024-08-14 v3.4.1.1 Class for Horizon Europe (R)IA proposals]
+[2024-09-03 v3.4.1.2 Class for Horizon Europe (R)IA proposals]
 %</class>
 %
 %<*driver>
@@ -526,6 +526,8 @@
 % \subsection{Version history}
 %
 % \begin{description}
+% \item[v3.4.1.2 (2024-09-03)] Fixed a bug where the column totals in
+%   Table 3.1f were doubled.
 % \item[v3.4.1.1 (2024-08-14)] Update documentation with a reference
 %   to the \emph{TUGboat} paper on \textsf{heria}.
 % \item[v3.4.1.0 (2024-07-14)] Add support for version 3.4 of the
@@ -1108,7 +1110,7 @@
       \whiledo{\value{@secolumn}<\value{@wpcount}}{%
         \stepcounter{@secolumn}%
         \edef\serowtemp{\serowtemp&\fpeval{round(\csname %
-          @wpPersonMonths\arabic{@secolumn}\endcsname,0)}}%
+          @wpPersonMonths\arabic{@secolumn}\endcsname/2,0)}}%
         \@bsphack
         \protected@write\@auxout{}%
         {\string\expandafter\string\expandafter\string\expandafter%
@@ -1117,7 +1119,7 @@
         \arabic{@secolumn}},0)}}}%
         \@esphack
       }
-      \serowtemp & \fpeval{round(\setotalpm,0)} \\
+      \serowtemp & \fpeval{round(\setotalpm/2,0)} \\
       \hline
     \end{xltabular}
   \end{center}
