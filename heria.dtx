@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{heria}
 %<*class>
-[2024-09-03 v3.4.1.2 Class for Horizon Europe (R)IA proposals]
+[2024-09-03 v3.4.1.3 Class for Horizon Europe (R)IA proposals]
 %</class>
 %
 %<*driver>
@@ -50,7 +50,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1520}
+% \CheckSum{1521}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -526,6 +526,8 @@
 % \subsection{Version history}
 %
 % \begin{description}
+% \item[v3.4.1.3 (2024-09-03)] Fixed a bug where the person-months in
+%   Table 3.1a were doubled.
 % \item[v3.4.1.2 (2024-09-03)] Fixed a bug where the column totals in
 %   Table 3.1f were doubled.
 % \item[v3.4.1.1 (2024-08-14)] Update documentation with a reference
@@ -730,7 +732,7 @@
     & #2 & \getPnum{#3} & #3 & %
     \@ifundefined{@wpTotalPersonMonths\arabic{@wp#1num}}%
     {\textbf{??}}%
-    {\disptoken{@wpTotalPersonMonths\arabic{@wp#1num}}}%
+    {\fpeval{\disptoken{@wpTotalPersonMonths\arabic{@wp#1num}}/2}}%
     & #4 & #5}}%
   \@esphack
   \ifthenelse{\arabic{@wp#1num}=1}{}{\bigskip}
