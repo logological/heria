@@ -23,7 +23,10 @@ To generate the documentation, run the file `heria.dtx` through
 To generate the skeleton proposal, build the class and then run the
 file `heria-proposal.tex` through `pdflatex`.
 
-## Source repository and bug tracker
+## Development
+
+`heria` was written and is maintained by [Tristan
+Miller](https://logological.org/).
 
 For now, the source code is hosted on GitHub at
 [https://github.com/logological/heria](https://github.com/logological/heria).
