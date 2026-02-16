@@ -23,6 +23,15 @@ To generate the documentation, run the file `heria.dtx` through
 To generate the skeleton proposal, build the class and then run the
 file `heria-proposal.tex` through `pdflatex`.
 
+### Online compilation (no local installation needed)
+If you don't want to install LaTeX locally, you can edit and compile this template entirely in the browser using [SpicyChai LaTeX](https://latex.spicychai.com/). It's a free online LaTeX editor with:
+
+- Real-time PDF preview as you type
+- AI-powered template population — useful for quickly filling in structured Horizon Europe proposal sections like work packages, deliverables, and participant tables
+- No account required for basic use (500 free credits on signup, 1 credit per rendered page)
+
+Upload the `.cls`, `.tex`, and `.bib` files and compile directly in the browser.
+
 ## Development
 
 `heria` was written and is maintained by [Tristan
