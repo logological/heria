@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright 2023-2025 Tristan Miller
+% Copyright 2023-2026 Tristan Miller
 % -----------------------------------
 %
 % This work may be distributed and/or modified under the
@@ -18,7 +18,7 @@
 \ProvidesFile{heria.dtx}
 %</driver>
 %<*class>
-%% Copyright 2023-2025 Tristan Miller
+%% Copyright 2023-2026 Tristan Miller
 %% Copyright 2016 John Kormylo
 %%
 %% This work may be distributed and/or modified under the
@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{heria}
 %<*class>
-[2025-08-16 v4.0.1.0 Class for Horizon Europe (R)IA proposals]
+[2026-08-16 v5.1.1.0alpha Class for Horizon Europe (R)IA proposals]
 %</class>
 %
 %<*driver>
@@ -50,7 +50,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1521}
+% \CheckSum{1630}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -91,19 +91,20 @@
 %
 % This document describes the usage of \textsf{heria}, a \LaTeX\ class
 % that facilitates the preparation of Research and Innovation Action
-% (RIA) and Innovation Action (IA) funding proposals for the European
-% Commission's~(EC) Horizon Europe program.  The Commission prescribes
-% a detailed, structured format for the technical description
-% (``Part~B'') of these proposals, but provides templates only in Rich
-% Text Format (RTF), a format that does not lend itself well to
-% collaborative authorship and \mbox{(cross-)}reference management.
-% The \textsf{heria} class is a conversion of the official Part~B
-% template into \LaTeX; it preserves the formatting and most of the
-% instructions of the original version, and has the additional feature
-% that tables (listing the participants, work packages, deliverables,
-% etc.)\ are programmatically generated according to data supplied by
-% the user.  The advantage of this becomes clear when one considers
-% that much of the data is reused across multiple tables.
+% (RIA) and Innovation Action (IA) single-stage funding proposals for
+% the European Commission's~(EC) Horizon Europe program.  The
+% Commission prescribes a detailed, structured format for the
+% technical description (``Part~B'') of these proposals, but provides
+% templates only in Rich Text Format (RTF), a format that does not
+% lend itself well to collaborative authorship and
+% \mbox{(cross-)}reference management.  The \textsf{heria} class is a
+% conversion of the official Part~B template into \LaTeX; it preserves
+% the formatting and most of the instructions of the original version,
+% and has the additional feature that tables (listing the
+% participants, work packages, deliverables, etc.)\ are
+% programmatically generated according to data supplied by the user.
+% The advantage of this becomes clear when one considers that much of
+% the data is reused across multiple tables.
 %
 % The \textsf{heria} package can be used to write proposals using
 % any of the following versions of the official Part~B template:
@@ -112,6 +113,7 @@
 % \item 3.3 (2023-09-27)
 % \item 3.4 (2024-04-04)
 % \item 4.0 (2024-12-16)
+% \item 5.1 (2026-01-22)
 % \end{itemize}
 %
 % \bigskip
@@ -135,11 +137,18 @@
 %
 % The EC's official template is structured in such a way that form and
 % content cannot be entirely separated. The best way of starting a new
-% proposal is therefore to make a copy of \texttt{heria-proposal.tex},
-% the skeleton proposal distributed with this package, and then adapt
-% it to your project.  The following subsections describe the various
-% macros and environments provided by \textsf{heria}, roughly in the
-% same order presented in the skeleton proposal.
+% proposal is therefore to make a copy of
+% \texttt{heria-proposal-5.1.tex}, the skeleton proposal distributed
+% with this package, and then adapt it to your project.  As suggested
+% by the filename, this skeleton proposal uses version 5.1 of the
+% official Part~B template.  (\textsf{heria} includes skeleton
+% proposals for earlier versions of the Part~B template in the files
+% \texttt{heria-proposal-4.0.tex}, \texttt{heria-proposal-3.4.tex},
+% etc.).
+% 
+% The following subsections describe the various macros and
+% environments provided by \textsf{heria}, roughly in the same order
+% presented in the skeleton proposal.
 %
 % \subsection{Preamble}
 %
@@ -164,9 +173,9 @@
 %
 % \DescribeMacro{\templateversion} This macro sets the version of the
 % official Part~B template the proposal should use.  It takes a single
-% argument; valid values are \verb|3.2|, \verb|3.3|, \verb|3.4|, and
-% \verb|4.0|.  If you omit this macro, \textsf{heria} will default to
-% using the latest version of the template.
+% argument; valid values are \verb|3.2|, \verb|3.3|, \verb|3.4|,
+% \verb|4.0|, and \verb|5.1|.  If you omit this macro, \textsf{heria}
+% will default to using the latest version of the template.
 %
 % \medskip
 %
@@ -212,14 +221,14 @@
 % instructions, you can simply remove or comment out the corresponding
 % \cs{heinstructions} macro.
 %
-% \DescribeMacro{\opentag}\DescribeMacro{\closetag} The official
-% template includes a number of ``tags'' that are used for the EC's
-% ``internal processing of information, mostly for statistical
-% gathering.''  The \cs{opentag} and \cs{closetag} macros are used to
-% emit the tags at the appropriate places in the proposal, and so
-% should be left in their original positions in the skeleton template.
-% The EC asks that proposal authors ``not move, delete, re-order, or
-% alter tags in any way''.
+% \DescribeMacro{\opentag}\DescribeMacro{\closetag} Versions of the official
+% Part~B template up to and including 4.0 include a number of ``tags''
+% that are used for the EC's ``internal processing of information,
+% mostly for statistical gathering.''  The \cs{opentag} and
+% \cs{closetag} macros are used to emit the tags at the appropriate
+% places in the proposal, and so should be left in their original
+% positions in the skeleton proposal.  The EC asks that proposal
+% authors ``not move, delete, re-order, or alter tags in any way''.
 %
 % \DescribeMacro{\section}\DescribeMacro{\subsection}\DescribeMacro{\subsubsection}
 % These three macros take a mandatory argument specifying the title of
@@ -227,13 +236,14 @@
 % respectively.  These document subdivisions are fixed by the official
 % template and so generally should not be renamed or reordered, though
 % it is probably safe to add additional ones where it does not disrupt
-% the numbering of the existing ones.  Many sections and subsections
-% \emph{must} be preceded or followed by certain tags, which are
-% specified in the first and second optional arguments, respectively.
-% The third optional argument contains the recommended page limit,
-% when specified by the official template.  The page limit will be
-% printed only when the \verb|showinstructions| option is passed to
-% the document class.
+% the numbering of the existing ones.  In versions of the official
+% Part~B template up to and including 4.0, many sections and
+% subsections \emph{must} be preceded or followed by certain tags,
+% which are specified in the first and second optional arguments,
+% respectively.  The third optional argument contains the recommended
+% page limit, when specified by the official template.  The page limit
+% will be printed only when the \verb|showinstructions| option is
+% passed to the document class.
 %
 % \subsection{Participants}
 %
@@ -389,6 +399,30 @@
 % the order of the \cs{participant} and \cs{subcontractingcost}
 % macros.
 %
+% \bigskip
+%
+% The following macros are relevant only for those proposals that use
+% versions of the official Part~B template from 5.1 onward:
+%
+% \DescribeMacro{\equipmentcost} This macro declares an equipment cost
+% (for the ``Purchase costs'' tables). It takes three mandatory
+% arguments: the short name of a participant (as specified in the
+% corresponding \cs{participant} macro), the amount of the equipment
+% cost in euros, and a free-form description of the need for the
+% equipment cost.  You should use one \cs{equipmentcost} macro for
+% each equipment cost in your project.
+%
+% \DescribeMacro{\makeequipmentcoststable} This macro emits the tables
+% of equipment (i.e.,\ purchase) costs, using the data from the
+% \cs{equipmentcost} macros.  Equipment costs are automatically
+% grouped by participant and then output according to the order of the
+% \cs{participant} and \cs{equipmentcost} macros.
+%
+% \bigskip
+%
+% The following macros are relevant only for those proposals that use
+% versions of the official Part~B template up to and including 4.0:
+%
 % \DescribeMacro{\purchasecost} This macro declares the purchase costs
 % for a participant.  It takes eight mandatory arguments:
 % \begin{quote}\cs{purchasecost}\marg{participant}\verb|%|\\
@@ -476,15 +510,19 @@
 %
 % \section{Limitations and caveats}
 %
-% \paragraph{Table 3.1h.} The instructions in the official template
-% are ambiguous about the construction of the tables for purchase
-% costs.  In particular, it's not clear whether each individual cost
-% exceeding 15\% of the personnel costs must be listed in a separate
-% row, or whether all costs in each category (``travel and
-% subsistence'', ``equipment'', etc.)\ should be combined into a
-% single row.  The \textsf{heria} class takes the latter
-% interpretation; this may or may not be the same interpretation
-% adopted by the funding agency and its reviewers.
+% \paragraph{Table 3.1h.} The instructions in versions of the official
+% template up to and including 4.0 are ambiguous about the
+% construction of the tables for purchase costs.  In particular, it's
+% not clear whether each individual cost exceeding 15\% of the
+% personnel costs must be listed in a separate row, or whether all
+% costs in each category (``travel and subsistence'', ``equipment'',
+% etc.)\ should be combined into a single row.  The \textsf{heria}
+% class takes the latter interpretation; this may or may not be the
+% same interpretation adopted by the funding agency and its reviewers.
+%
+% This ambiguity is not so troubling in versions of the official
+% template after 4.0, since their purchase tables list only one
+% category of costs (equipment).
 %
 % \paragraph{Error handling.} The class currently does very little
 % error checking on its input.  Usually invalid input (e.g., mistyping
@@ -531,11 +569,16 @@
 % \subsection{Version history}
 %
 % \begin{description}
+% \item[v5.1.1.0alpha (2026-08-16)] Add support for version 5.1 of the
+%   official Part~B template.
+%
+%   Remove licence notice from skeleton proposals.
+%
 % \item[v4.0.1.0 (2025-08-16)] Add support for version 4.0 of the
 %   official Part~B template.
-% \item[v3.4.1.3 (2024-09-03)] Fixed a bug where the person-months in
+% \item[v3.4.1.3 (2024-09-03)] Fix a bug where the person-months in
 %   Table 3.1a were doubled.
-% \item[v3.4.1.2 (2024-09-03)] Fixed a bug where the column totals in
+% \item[v3.4.1.2 (2024-09-03)] Fix a bug where the column totals in
 %   Table 3.1f were doubled.
 % \item[v3.4.1.1 (2024-08-14)] Update documentation with a reference
 %   to the \emph{TUGboat} paper on \textsf{heria}.
@@ -633,8 +676,8 @@
 % \subsection*{Set official Horizon Europe template version}
 %
 %    \begin{macrocode}
-\gdef\@templateversion{4.0} % Default version
-\def\@supportedtemplateversions{3.2,3.3,3.4,4.0} % Supported versions
+\gdef\@templateversion{5.1} % Default version
+\def\@supportedtemplateversions{3.2,3.3,3.4,4.0,5.1} % Supported versions
 \ExplSyntaxOn
 \NewDocumentCommand{\templateversion}{m}{%
  \clist_if_in:NnTF {\@supportedtemplateversions} {#1}
@@ -666,6 +709,7 @@
   \expandafter\xdef\csname @pShortName\arabic{@p#2num}\endcsname{#2}%
   \expandafter\xdef\csname @pCountry\arabic{@p#2num}\endcsname{#3}%
   \newcounter{@pSubcontractingCosts\arabic{@p#2num}}%
+  \newcounter{@pEquipmentCosts\arabic{@p#2num}}%
   \newcounter{@pPurchaseCosts\arabic{@p#2num}}%
   \newcounter{@pOtherCosts\arabic{@p#2num}}%
   \newcounter{@pInkindContributions\arabic{@p#2num}}%
@@ -1210,6 +1254,81 @@
 }
 %    \end{macrocode}
 %
+% \subsection*{Equipment costs}
+%
+%    \begin{macrocode}
+\newcommand{\equipmentcost}[3]{%
+  \stepcounter{@pEquipmentCosts\getPnum{#1}}
+  \expandafter\xdef\csname %
+    @eqCost\getPnum{#1}.\arabic{@pEquipmentCosts\getPnum{#1}}%
+    \endcsname{#2}%
+  \expandafter\xdef\csname %
+    @eqJustification\getPnum{#1}.\arabic{@pEquipmentCosts\getPnum%
+      {#1}}\endcsname{#3}%
+}
+%    \end{macrocode}
+%
+% Equipment costs table
+%
+%    \begin{macrocode}
+\newcommand{\makeequipmentcoststable}{%
+  \newcounter{@eqparticipant}
+  \begin{center}
+    % For each participant
+    \whiledo{\value{@eqparticipant}<\value{@pcount}}{%
+      \stepcounter{@eqparticipant}%
+      \ifthenelse%
+        {\value{@pEquipmentCosts\arabic%
+        {@eqparticipant}}>0}% If they have equipment costs
+      {\eqtablesection%
+        {@eqparticipant}}% Print their equipment costs table
+      {}% Otherwise, do nothing
+    }%
+  \end{center}
+}
+%    \end{macrocode}
+%
+% Equipment costs table section
+%
+%    \begin{macrocode}
+\newcommand{\eqtablesection}[1]{%
+  \newcounter{@eqcost\arabic{#1}}
+  \edef\eqrowtemp{}
+  \renewcommand\theadfont{\normalsize\bfseries}
+  \begin{xltabular}{\textwidth}{|>{\columncolor{tablegrey}}l|r|X|}
+    \hline
+    \rowcolor{tablegrey}
+    \multicolumn{3}{|l|}{\bfseries\the\value{#1} %
+      \disptoken{@pShortName\arabic{#1}}} \\
+    \hline
+    \rowcolor{tablegrey}
+    & \thead{Cost (€)}
+    & \thead{Description of tasks and justification} \\
+    \hline
+    % For each equipment cost
+    \whiledo%
+      {\value{@eqcost\arabic{#1}}<\numexpr\value%
+      {@pEquipmentCosts\arabic{#1}}-1}{%
+    \stepcounter{@eqcost\arabic{#1}}%
+    \eqtablerow{#1}{@eqcost\arabic{#1}}%
+    }%
+    \stepcounter{@eqcost\arabic{#1}}%
+    \eqtablerow{#1}{@eqcost\arabic{#1}}%
+  \end{xltabular}
+}
+%    \end{macrocode}
+%
+% Equipment costs table row
+%
+%    \begin{macrocode}
+\newcommand{\eqtablerow}[2]{%
+  \thead{Equipment} &
+  \disptoken{@eqCost\arabic{#1}.\arabic{#2}} &
+  \disptoken{@eqJustification\arabic{#1}.\arabic{#2}}
+  \\ \hline
+}
+%    \end{macrocode}
+%
 % \subsection*{Other costs}
 %
 %    \begin{macrocode}
@@ -1588,21 +1707,25 @@
 }
 %    \end{macrocode}
 %
-% Format page limits used by the Horizon Europe template
+% Format comments and page limits used by the Horizon Europe
+% template's section headings
 %
 %    \begin{macrocode}
+\ExplSyntaxOn
+\cs_generate_variant:Nn \str_if_in:nnTF { neTF }
 \NewDocumentCommand{\showpagelimit}{m}
-{%
-   \ifheria@showinstructions%
-   {\normalfont\sffamily\itshape [e.g.\ #1]}%
-   \fi%
+{
+   \ifheria@showinstructions
+     \str_if_in:neTF { 0123456789 } { \tl_head:n { #1 } }
+     {\normalfont\sffamily\itshape [e.g.\ #1]}
+     {#1}
+   \fi
 }
 %    \end{macrocode}
 %
 % Format ``tags'' used by the Horizon Europe template
 %
 %    \begin{macrocode}
-\ExplSyntaxOn
 \NewDocumentCommand{\hetag}{mm}
  {%
    \textcolor{taggrey}{\normalfont\sffamily\footnotesize%
@@ -1610,8 +1733,20 @@
    }%
  }
 \ExplSyntaxOff
-\NewDocumentCommand{\opentag}{m}{\hetag{@}{#1}}
-\NewDocumentCommand{\closetag}{m}{\noindent\hetag{§}{#1}}
+\NewDocumentCommand{\opentag}{m}{%
+  \makeatletter%
+  \ifdim\@templateversion pt<5.1pt%
+    \hetag{@}{#1}%
+  \fi%
+  \makeatother%
+}
+\NewDocumentCommand{\closetag}{m}{
+  \makeatletter%
+  \ifdim\@templateversion pt<5.1pt%
+  \noindent\hetag{§}{#1}%
+  \fi%
+  \makeatother%
+}
 %    \end{macrocode}
 %
 % Format section titles, with optional opening and closing tags
@@ -1719,6 +1854,8 @@
 \newcommand{\heinstructions}[1]{%
   \ifheria@showinstructions%
   \begin{instructions}%
+    \urlstyle{sf}%
+    \def\do@url@hyp{\do\-}%
     \input{hi-#1}%
   \end{instructions}%
   \fi%
@@ -1907,9 +2044,16 @@ project monitoring.\footnote{You must include a data
 
 \begin{itemize}
 \item
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
   Credibility of the pathways to achieve the expected outcomes and
   impacts specified in the work programme, and the likely scale and
   significance of the contributions due to the project.
+\else
+  Credibility of the pathways to achieve the expected outcomes and
+  impacts specified in the work programme.
+\fi
+\makeatother
 \item
   Suitability and quality of the measures to maximise expected outcomes
   and impacts, as set out in the dissemination and exploitation plan,
@@ -1922,18 +2066,30 @@ expected outcomes set out for the work programme topic over the medium
 term, and to the wider expected impacts set out in the `destination'
 over the longer term.}
 
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
 \emph{In this section you should show how your project could contribute
 to the outcomes and impacts described in the work programme, the likely
 scale and significance of this contribution, and the measures to
 maximise these impacts.}
+\else
+\emph{In this section you should show how your project could
+contribute to the outcomes and impacts described in the work
+programme, and the measures to maximise these impacts.}
+\fi
+\makeatother
 %</hi-impact>
 %<*hi-inkind>
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
 Please complete the table below for each participant that will make use
 of in-kind contributions (non-financial resources made available free of
 charge by third parties). In kind contributions provided by third
 parties free of charge are declared by the participants as eligible
 direct costs in the corresponding cost category (e.g.\ personnel costs or
 purchase costs for equipment).
+\fi
+\makeatother
 %</hi-inkind>
 %<*hi-measures>
 \begin{itemize}
@@ -2008,8 +2164,6 @@ purchase costs for equipment).
   the results (results ownership list) in the final periodic report.}
 \end{itemize}
 \end{itemize}
-
-
 %</hi-measures>
 %<*hi-methodology>
 \begin{itemize}
@@ -2099,7 +2253,13 @@ purchase costs for equipment).
   social\slash cultural factors respectively. For guidance on methods of sex\slash
   gender analysis and the issues to be taken into account, please refer
   to}
-  \url{https://ec.europa.eu/info/news/gendered-innovations-2-2020-nov-24_en}
+\makeatletter
+\ifdim\@templateversion pt<4.0pt
+  \emph{\url{https://ec.europa.eu/info/news/gendered-innovations-2-2020-nov-24_en}}
+\else
+  \emph{\url{https://op.europa.eu/en/publication-detail/-/publication/33b4c99f-2e66-11eb-b27b-01aa75ed71a1/language-en}}
+\fi
+\makeatother
 \end{itemize}
 
 \item
@@ -2233,14 +2393,18 @@ survey complete and data quality validated.
   \item \emph{Please bear in mind that advances beyond the state of
       the art must be interpreted in the light of the positioning of
       the project.  Expectations will not be the same for RIAs at
-      lower TRL, compared with Innovation Actions at high TRLs. }
+      lower TRL, compared with Innovation Actions at high TRLs.}
   \end{itemize}
 \end{itemize}
 %</hi-objectives>
 %<*hi-othercosts>
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
 Please complete the table below for each participant that would like to
 declare costs under other costs categories (e.g.\ internally invoiced
 goods and services), irrespective of the percentage of personnel costs.
+\fi
+\makeatother
 %</hi-othercosts>
 %<*hi-participant-numbering>
 Please use the same participant numbering and name as that used in the
@@ -2268,7 +2432,11 @@ table below.
   towards (1)~the \textbf{outcomes} specified in this topic, and (2)~the
   \textbf{wider impacts}, in the longer term, specified in the
   respective destinations in the work programme.
-
+\makeatletter
+\ifdim\@templateversion pt>4.0pt
+  Provide quantified estimates where possible and meaningful.
+\fi
+\makeatother
 \begin{itemize}[label=\twarn]
 \item
   \emph{Be specific, referring to the effects of your project, and not
@@ -2278,6 +2446,8 @@ table below.
   groups are mentioned in general terms in the work programme, you
   should be specific here, breaking target groups into particular
   interest groups or segments of society relevant to this project.}
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
 \item
   \emph{The outcomes and impacts of your project may:}
 
@@ -2333,6 +2503,8 @@ Where relevant, explain how the potential harm can be managed.}
 \item
   \emph{Your estimate must relate to this project only~- the effect of
   other initiatives should not be taken into account.}
+\fi
+\makeatother
 \end{itemize}
 
 \item
@@ -2356,6 +2528,8 @@ Where relevant, explain how the potential harm can be managed.}
 \end{itemize}
 %</hi-pathways>
 %<*hi-purchasecosts>
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
 Please complete the table below for each participant if the purchase
 costs (i.e.\ the sum of the costs for 'travel and subsistence',
 `equipment', and `other goods, works and services') exceeds 15\% of the
@@ -2363,6 +2537,12 @@ personnel costs for that participant (according to the budget table in
 proposal part~A). The record must list cost items in order of costs and
 starting with the largest cost item, up to the level that the remaining
 costs are below 15\% of personnel costs.
+\else
+Please provide details on the need for equipment costs if they
+exceed 15\% of the personnel costs for that participant (according
+to the budget table in proposal part~A).
+\fi
+\makeatother
 %</hi-purchasecosts>
 %<*hi-quality>
 \begin{tcolorbox}[standard jigsaw,opacityback=0]
@@ -2504,8 +2684,10 @@ Please provide the following:
 \item
   a table showing justifications for `purchase costs' (table~3.1h) for
   participants where those costs exceed 15\% of the personnel costs
-  (according to the budget table in proposal part~A);
+  (according to the budget table in proposal part~A); % [sic]
   
+\makeatletter
+\ifdim\@templateversion pt<5.1pt
 \item
   if applicable, a table showing justifications for `other costs
   categories' (table~3.1i);
@@ -2513,6 +2695,8 @@ Please provide the following:
 \item
   if applicable, a table showing in-kind contributions from third
   parties (table~3.1j)
+\fi
+\makeatother
 \end{itemize}
 %</hi-workplan>
 %<*hi-wp-description>
@@ -2532,19 +2716,13 @@ participants. Deliverables linked to each WP are listed in table~3.1c
   each WP are shown in table~3.1a.)}
 %</hi-wp-objectives>
 %<*heria-proposal>
-%% Copyright 2023, 2024 Tristan Miller
-%%
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3c
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%   https://www.latex-project.org/lppl.txt
-%% and version 1.3c or later is part of all distributions of LaTeX
-%% version 2008 or later.
-%%
 \documentclass[showinstructions]{heria}
 
-\templateversion{4.0}
+%<3.2>\templateversion{3.2}
+%<3.3>\templateversion{3.3}
+%<3.4>\templateversion{3.4}
+%<4.0>\templateversion{4.0}
+%<5.1>\templateversion{5.1}
 
 \title{Skeleton Horizon Europe Proposal}
 \callname{insert call name}
@@ -2556,7 +2734,7 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 
 \heinstructions{participants}
 
-\noindent\opentag{APP-FORM-HERIAIA}%
+%<3.2|3.3|3.4|4.0>\noindent\opentag{APP-FORM-HERIAIA}%
 \section*{List of participants}[][][1 page]\label{sec:listofparticipants}
 
 \participant
@@ -2578,15 +2756,18 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 
 \heinstructions{participant-numbering}
 
-\section{Excellence}[REL-EVA-RE]\label{sec:excellence}
+%<3.2|3.3|3.4|4.0>\section{Excellence}[REL-EVA-RE]\label{sec:excellence}
+%<5.1>\section{Excellence}\label{sec:excellence}
 
 \heinstructions{excellence}
 
-\subsection{Objectives and ambition}[PRJ-OBJ-PO][][4 pages]\label{sec:objectives}
+%<3.2|3.3|3.4|4.0>\subsection{Objectives and ambition}[PRJ-OBJ-PO][][4 pages]\label{sec:objectives}
+%<5.1>\subsection{Objectives and ambition}[][][4 pages]\label{sec:objectives}
 
 \heinstructions{objectives}
 
-\subsection{Methodology}[CON-MET-CM,COM-PLE-CP][PRJ-OBJ-PO][14 pages]\label{sec:methodology}
+%<3.2|3.3|3.4|4.0>\subsection{Methodology}[CON-MET-CM,COM-PLE-CP][PRJ-OBJ-PO][14 pages]\label{sec:methodology}
+%<5.1>\subsection{Methodology}[][][14 pages]\label{sec:methodology}
 
 \heinstructions{methodology}
 
@@ -2596,33 +2777,34 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 
 \subsubsection{Interdisciplinarity}[][][1/2 page]\label{sec:interdisciplinarity}
 
-\subsubsection{Gender dimension}[][][1/2 page]\label{sec:gender} 
+%<3.2|3.3|3.4|4.0>\subsubsection{Gender dimension}[][][1/2 page]\label{sec:gender} 
+%<5.1>\subsubsection{Gender dimension}[][][1 page]\label{sec:gender} 
 
 \subsubsection{Open science}[][][1 page]\label{sec:openscience}
 
-\makeatletter
-\ifdim\@templateversion pt<4.0pt
-\subsubsection{Research data management}[][][1 page]\label{sec:rdm}
-\fi
-\makeatother
+%<3.2|3.3|3.4>\subsubsection{Research data management}[][][1 page]\label{sec:rdm}
 
-\section{Impact}[IMP-ACT-IA][CON-MET-CM,COM-PLE-CP,REL-EVA-RE]\label{sec:impact}
+%<3.2|3.3|3.4|4.0>\section{Impact}[IMP-ACT-IA][CON-MET-CM,COM-PLE-CP,REL-EVA-RE]\label{sec:impact}
+%<5.1>\section{Impact}\label{sec:impact}
 
 \heinstructions{impact}
 
-\subsection{Project's pathways towards impact}[][][4 pages]\label{sec:pathways}
+%<3.2|3.3|3.4|4.0>\subsection{Project's pathways towards impact}[][][4 pages]\label{sec:pathways}
+%<5.1>\subsection{Project's pathways towards impact}[][][3 pages]\label{sec:pathways}
 
 \heinstructions{pathways}
 
-\subsection{Measures to maximise impact: Dissemination, exploitation and communication}[COM-DIS-VIS-CDV][][5 pages, including section~\ref{sec:summary}]\label{sec:measures}
+%<3.2|3.3|3.4|4.0>\subsection{Measures to maximise impact: Dissemination, exploitation and communication}[COM-DIS-VIS-CDV][][5 pages, including section~\ref{sec:summary}]\label{sec:measures}
+%<5.1>\subsection{Measures to maximise impact: Dissemination, exploitation and communication}[][][3 pages, excluding section~\IfLabelExistsTF{sec:summary}{\ref{sec:summary}}{2.3}]\label{sec:measures}
 
 \heinstructions{measures}
 
-\subsection{Summary}\label{sec:summary}
+%<3.2|3.3|3.4|4.0>\subsection{Summary}\label{sec:summary}
+%<5.1>\subsection{Summary}[][][(OPTIONAL~-- Please remove this section if not used)]\label{sec:summary}
 
 \heinstructions{summary}
 
-\closetag{COM-DIS-VIS-CDV}
+%<3.2|3.3|3.4|4.0>\closetag{COM-DIS-VIS-CDV}
 
 \begin{SidewaysFigure}
 \begin{summarycanvas}%
@@ -2644,11 +2826,13 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 \caption{Impact summary tableau}\label{fig:impact}
 \end{SidewaysFigure}
 
-\section{Quality and efficiency of the implementation}[QUA-LIT-QL,WRK-PLA-WP][IMP-ACT-IA]\label{sec:quality}
+%<3.2|3.3|3.4|4.0>\section{Quality and efficiency of the implementation}[QUA-LIT-QL,WRK-PLA-WP][IMP-ACT-IA]\label{sec:quality}
+%<5.1>\section{Quality and efficiency of the implementation}\label{sec:quality}
 
 \heinstructions{quality}
 
-\subsection{Work plan and resources}[][][14 pages (19 pages for topics using lump sum funding)~-- including tables]\label{sec:workplan}
+%<3.2|3.3|3.4|4.0>\subsection{Work plan and resources}[][][14 pages (19 pages for topics using lump sum funding)~-- including tables]\label{sec:workplan}
+%<5.1>\subsection{Work plan and resources}[][][12 pages (17 pages for topics using lump sum funding)~-- including tables]\label{sec:workplan}
 
 \heinstructions{workplan}
 
@@ -2781,7 +2965,8 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 \heinstructions{milestones}
 \makemilestonestable
 
-\subsubsection*{Table 3.1e: Critical risks for implementation}[RSK-MGT-RM]
+%<3.2|3.3|3.4|4.0>\subsubsection*{Table 3.1e: Critical risks for implementation}[RSK-MGT-RM]
+%<5.1>\subsubsection*{Table 3.1e: Critical risks for implementation}
 
 \criticalrisk
   {Datasets are not available} % description of risk
@@ -2793,7 +2978,8 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 \heinstructions{criticalrisks}
 \makecriticalriskstable
 
-\subsubsection*{Table 3.1f: Summary of staff effort}[][RSK-MGT-RM]
+%<3.2|3.3|3.4|4.0>\subsubsection*{Table 3.1f: Summary of staff effort}[][RSK-MGT-RM]
+%<5.1>\subsubsection*{Table 3.1f: Summary of staff effort}
 
 \staffeffort
   {UUF} % short name of participant
@@ -2822,6 +3008,20 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 
 \makesubcontractingcoststable
 
+%<*5.1>
+\subsubsection*{Table 3.1h: `Purchase costs' items (major equipment costs)}
+
+\heinstructions{purchasecosts}
+
+\equipmentcost
+  {IUBW} % short name of participant
+  {2120} % cost in euros
+  {Computing cluster} % details on need for equipment
+
+\makeequipmentcoststable
+
+%</5.1>
+%<*3.2|3.3|3.4|4.0>
 \subsubsection*{Table 3.1h: `Purchase costs' items (travel and subsistence, equipment and other goods, works and services)}
 
 \heinstructions{purchasecosts}
@@ -2865,13 +3065,15 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 \heinstructions{inkind}
 \makeinkindcontributionstable
 
-\subsection{Capacity of participants and consortium as a whole}[CON-SOR-CS,PRJ-MGT-PM][][3 pages]\label{sec:capacity}
+%</3.2|3.3|3.4|4.0>
+%<3.2|3.3|3.4|4.0>\subsection{Capacity of participants and consortium as a whole}[CON-SOR-CS,PRJ-MGT-PM][][3 pages]\label{sec:capacity}
+%<5.1>\subsection{Capacity of participants and consortium as a whole}[][][3 pages]\label{sec:capacity}
 
 \heinstructions{capacity}
 
-\closetag{CON-SOR-CS,PRJ-MGT-PM}
+%<3.2|3.3|3.4|4.0>\closetag{CON-SOR-CS,PRJ-MGT-PM}
 
-\closetag{QUA-LIT-QL,WRK-PLA-WP}
+%<3.2|3.3|3.4|4.0>\closetag{QUA-LIT-QL,WRK-PLA-WP}
 
 \heinstructions{annexes}
 \end{document}
