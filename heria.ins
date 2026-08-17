@@ -21,31 +21,45 @@ This is a generated file.
 
 \endpreamble
 
-\ExplSyntaxOn
-
-\clist_set:Nn \l_versions { 3.2, 3.3, 3.4, 4.0, 5.1 }
-\clist_set:Nn \l_instructions { annexes, capacity, criticalrisks,
-  deliverables-key, deliverables, excellence, impact, inkind,
-  measures, methodology, milestones, objectives, othercosts,
-  participant-numbering, participants, pathways, purchasecosts,
-  quality, staffeffort, subcontractingcosts, summary-decmeasures,
-  summary-expectedresults, summary-impacts, summary-outcomes,
-  summary-specificneeds, summary-targetgroups, summary, tables,
-  workplan, wp-description, wp-objectives }
-
-\askforoverwritefalse
 \generate{\file{heria.cls}{\from{heria.dtx}{class}}}
-
-\clist_map_inline:Nn \l_instructions {
-  \generate{\file{hi-#1.tex}{\from{heria.dtx}{hi-#1}}}
-}
+\generate{\file{hi-annexes.tex}{\from{heria.dtx}{hi-annexes}}}
+\generate{\file{hi-capacity.tex}{\from{heria.dtx}{hi-capacity}}}
+\generate{\file{hi-criticalrisks.tex}{\from{heria.dtx}{hi-criticalrisks}}}
+\generate{\file{hi-deliverables-key.tex}{\from{heria.dtx}{hi-deliverables-key}}}
+\generate{\file{hi-deliverables.tex}{\from{heria.dtx}{hi-deliverables}}}
+\generate{\file{hi-excellence.tex}{\from{heria.dtx}{hi-excellence}}}
+\generate{\file{hi-impact.tex}{\from{heria.dtx}{hi-impact}}}
+\generate{\file{hi-inkind.tex}{\from{heria.dtx}{hi-inkind}}}
+\generate{\file{hi-measures.tex}{\from{heria.dtx}{hi-measures}}}
+\generate{\file{hi-methodology.tex}{\from{heria.dtx}{hi-methodology}}}
+\generate{\file{hi-milestones.tex}{\from{heria.dtx}{hi-milestones}}}
+\generate{\file{hi-objectives.tex}{\from{heria.dtx}{hi-objectives}}}
+\generate{\file{hi-othercosts.tex}{\from{heria.dtx}{hi-othercosts}}}
+\generate{\file{hi-participant-numbering.tex}{\from{heria.dtx}{hi-participant-numbering}}}
+\generate{\file{hi-participants.tex}{\from{heria.dtx}{hi-participants}}}
+\generate{\file{hi-pathways.tex}{\from{heria.dtx}{hi-pathways}}}
+\generate{\file{hi-purchasecosts.tex}{\from{heria.dtx}{hi-purchasecosts}}}
+\generate{\file{hi-quality.tex}{\from{heria.dtx}{hi-quality}}}
+\generate{\file{hi-staffeffort.tex}{\from{heria.dtx}{hi-staffeffort}}}
+\generate{\file{hi-subcontractingcosts.tex}{\from{heria.dtx}{hi-subcontractingcosts}}}
+\generate{\file{hi-summary-decmeasures.tex}{\from{heria.dtx}{hi-summary-decmeasures}}}
+\generate{\file{hi-summary-expectedresults.tex}{\from{heria.dtx}{hi-summary-expectedresults}}}
+\generate{\file{hi-summary-impacts.tex}{\from{heria.dtx}{hi-summary-impacts}}}
+\generate{\file{hi-summary-outcomes.tex}{\from{heria.dtx}{hi-summary-outcomes}}}
+\generate{\file{hi-summary-specificneeds.tex}{\from{heria.dtx}{hi-summary-specificneeds}}}
+\generate{\file{hi-summary-targetgroups.tex}{\from{heria.dtx}{hi-summary-targetgroups}}}
+\generate{\file{hi-summary.tex}{\from{heria.dtx}{hi-summary}}}
+\generate{\file{hi-tables.tex}{\from{heria.dtx}{hi-tables}}}
+\generate{\file{hi-workplan.tex}{\from{heria.dtx}{hi-workplan}}}
+\generate{\file{hi-wp-description.tex}{\from{heria.dtx}{hi-wp-description}}}
+\generate{\file{hi-wp-objectives.tex}{\from{heria.dtx}{hi-wp-objectives}}}
 
 \nopreamble\nopostamble
-\clist_map_inline:Nn \l_versions {
-  \generate{\file{heria-proposal-#1.tex}{\from{heria.dtx}{heria-proposal,#1}}}
-}
-
-\ExplSyntaxOff
+\generate{\file{heria-proposal-3.2.tex}{\from{heria.dtx}{heria-proposal,3.2}}}
+\generate{\file{heria-proposal-3.3.tex}{\from{heria.dtx}{heria-proposal,3.3}}}
+\generate{\file{heria-proposal-3.4.tex}{\from{heria.dtx}{heria-proposal,3.4}}}
+\generate{\file{heria-proposal-4.0.tex}{\from{heria.dtx}{heria-proposal,4.0}}}
+\generate{\file{heria-proposal-5.1.tex}{\from{heria.dtx}{heria-proposal,5.1}}}
 
 \Msg{*********************************************************}
 \Msg{*}
@@ -53,14 +67,42 @@ This is a generated file.
 \Msg{* following files into a directory searched by TeX:}
 \Msg{*}
 \Msg{* \space\space heria.cls}
-\ExplSyntaxOn
-\clist_map_inline:Nn \l_versions {
-  \Msg{*\space\space\space heria-proposal-#1.tex}
-}
-\clist_map_inline:Nn \l_instructions {
-  \Msg{*\space\space\space hi-#1.tex}
-}
-\ExplSyntaxOff
+\Msg{* \space\space heria-proposal-3.2.tex}
+\Msg{* \space\space heria-proposal-3.3.tex}
+\Msg{* \space\space heria-proposal-3.4.tex}
+\Msg{* \space\space heria-proposal-4.0.tex}
+\Msg{* \space\space heria-proposal-5.1.tex}
+\Msg{* \space\space hi-annexes.tex}
+\Msg{* \space\space hi-capacity.tex}
+\Msg{* \space\space hi-criticalrisks.tex}
+\Msg{* \space\space hi-deliverables-key.tex}
+\Msg{* \space\space hi-deliverables.tex}
+\Msg{* \space\space hi-excellence.tex}
+\Msg{* \space\space hi-impact.tex}
+\Msg{* \space\space hi-inkind.tex}
+\Msg{* \space\space hi-measures.tex}
+\Msg{* \space\space hi-methodology.tex}
+\Msg{* \space\space hi-milestones.tex}
+\Msg{* \space\space hi-objectives.tex}
+\Msg{* \space\space hi-othercosts.tex}
+\Msg{* \space\space hi-participant-numbering.tex}
+\Msg{* \space\space hi-participants.tex}
+\Msg{* \space\space hi-pathways.tex}
+\Msg{* \space\space hi-purchasecosts.tex}
+\Msg{* \space\space hi-quality.tex}
+\Msg{* \space\space hi-staffeffort.tex}
+\Msg{* \space\space hi-subcontractingcosts.tex}
+\Msg{* \space\space hi-summary-decmeasures.tex}
+\Msg{* \space\space hi-summary-expectedresults.tex}
+\Msg{* \space\space hi-summary-impacts.tex}
+\Msg{* \space\space hi-summary-outcomes.tex}
+\Msg{* \space\space hi-summary-specificneeds.tex}
+\Msg{* \space\space hi-summary-targetgroups.tex}
+\Msg{* \space\space hi-summary.tex}
+\Msg{* \space\space hi-tables.tex}
+\Msg{* \space\space hi-workplan.tex}
+\Msg{* \space\space hi-wp-description.tex}
+\Msg{* \space\space hi-wp-objectives.tex}
 \Msg{*}
 \Msg{* To produce the documentation run the file heria.dtx}
 \Msg{* through pdflatex.}
