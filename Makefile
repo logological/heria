@@ -49,7 +49,7 @@ heria.pdf: heria.dtx
 
 # Package heria for distribution on CTAN
 heria.tar.gz dist ctanify: heria.pdf $(SKELETONS_PDF) README.md
-	$(CTANIFY) heria.ins $@ $(foreach file,$(SKELETONS_TEX),$(file)=$(DOCDIR)) $(foreach file,$(INSTRUCTIONS),$(file)=$(TEXDIR))
+	$(CTANIFY) heria.ins $^ $(foreach file,$(SKELETONS_TEX),$(file)=$(DOCDIR)) $(foreach file,$(INSTRUCTIONS),$(file)=$(TEXDIR))
 
 # Remove all generated files
 clean:
