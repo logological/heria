@@ -21,21 +21,22 @@ DOCDIR=doc/latex/heria
 GENERATED_EXTENSIONS=aux idx log out pdf synctex.gz gls ilg toc tex
 
 TEMPLATE_VERSIONS=3.2 3.3 3.4 4.0 5.1
-HERIA_INSTRUCTIONS=hi-annexes.tex hi-capacity.tex hi-criticalrisks.tex hi-deliverables-key.tex hi-deliverables.tex hi-excellence.tex hi-impact.tex hi-inkind.tex hi-measures.tex hi-methodology.tex hi-milestones.tex hi-objectives.tex hi-othercosts.tex hi-participant-numbering.tex hi-participants.tex hi-pathways.tex hi-purchasecosts.tex hi-quality.tex hi-staffeffort.tex hi-subcontractingcosts.tex hi-summary.tex hi-tables.tex hi-workplan.tex hi-wp-description.tex hi-wp-objectives.tex
-HERIA_SKELETON_PROPOSALS_TEX=$(foreach version,$(TEMPLATE_VERSIONS),heria-proposal-$(version).tex)
-HERIA_SKELETON_PROPOSALS_PDF=$(foreach version,$(TEMPLATE_VERSIONS),heria-proposal-$(version).pdf)
-HERIA_CLASS_FILES=heria.cls
-HERIA_INS_FILES=$(HERIA_CLASS_FILES) $(HERIA_SKELETON_PROPOSALS_TEX) $(HERIA_INSTRUCTIONS)
+INSTRUCTIONS_BASENAMES=annexes capacity criticalrisks deliverables-key deliverables excellence impact inkind measures methodology milestones objectives othercosts participant-numbering participants pathways purchasecosts quality staffeffort subcontractingcosts summary-decmeasures summary-expectedresults summary-impacts summary-outcomes summary-specificneeds summary-targetgroups summary tables workplan wp-description wp-objectives
+INSTRUCTIONS=$(foreach basename,$(INSTRUCTIONS_BASENAMES),hi-$(basename).tex)
+SKELETONS_TEX=$(foreach version,$(TEMPLATE_VERSIONS),heria-proposal-$(version).tex)
+SKELETONS_PDF=$(foreach version,$(TEMPLATE_VERSIONS),heria-proposal-$(version).pdf)
+CLASS_FILES=heria.cls
+INS_FILES=$(CLASS_FILES) $(SKELETONS_TEX) $(INSTRUCTIONS)
 
 # Build the class, skeleton proposals, and documentation
-all: $(HERIA_SKELETON_PROPOSALS_PDF) heria.pdf
+all: $(SKELETONS_PDF) heria.pdf
 
 # Extract the source files from heria.dtx
-$(HERIA_INS_FILES) &: heria.ins heria.dtx
+$(INS_FILES) &: heria.ins heria.dtx
 	$(PDFLATEX) heria.ins
 
 # Build the skeleton proposal
-heria-proposal-%.pdf: heria-proposal-%.tex $(HERIA_CLASS_FILES) $(HERIA_INSTRUCTIONS)
+heria-proposal-%.pdf: heria-proposal-%.tex $(CLASS_FILES) $(INSTRUCTIONS)
 	$(PDFLATEX) $<
 	$(PDFLATEX) $<
 	$(PDFLATEX) $<
@@ -47,11 +48,11 @@ heria.pdf: heria.dtx
 	$(PDFLATEX) $<
 
 # Package heria for distribution on CTAN
-heria.tar.gz dist ctanify: heria.pdf $(HERIA_SKELETON_PROPOSALS_PDF) README.md
-	$(CTANIFY) heria.ins $@ $(foreach file,$(HERIA_SKELETON_PROPOSALS_TEX),$(file)=$(DOCDIR)) $(foreach file,$(HERIA_INSTRUCTIONS),$(file)=$(TEXDIR))
+heria.tar.gz dist ctanify: heria.pdf $(SKELETONS_PDF) README.md
+	$(CTANIFY) heria.ins $@ $(foreach file,$(SKELETONS_TEX),$(file)=$(DOCDIR)) $(foreach file,$(INSTRUCTIONS),$(file)=$(TEXDIR))
 
 # Remove all generated files
 clean:
-	$(RM) heria.cls heria.glo heria.hd heria.tar.gz $(HERIA_INSTRUCTIONS) $(foreach ext,$(GENERATED_EXTENSIONS),heria.$(ext)) $(foreach version,$(TEMPLATE_VERSIONS),$(foreach ext,$(GENERATED_EXTENSIONS),heria-proposal-$(version).$(ext)))
+	$(RM) heria.cls heria.glo heria.hd heria.tar.gz $(INSTRUCTIONS) $(foreach ext,$(GENERATED_EXTENSIONS),heria.$(ext)) $(foreach version,$(TEMPLATE_VERSIONS),$(foreach ext,$(GENERATED_EXTENSIONS),heria-proposal-$(version).$(ext)))
 
 .PHONY: clean dist ctanify

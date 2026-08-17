@@ -33,7 +33,7 @@
 %<class>\NeedsTeXFormat{LaTeX2e}
 %<class>\ProvidesClass{heria}
 %<*class>
-[2026-08-16 v5.1.1.0alpha Class for Horizon Europe (R)IA proposals]
+[2026-08-16 v5.1.1.0 Class for Horizon Europe (R)IA proposals]
 %</class>
 %
 %<*driver>
@@ -50,7 +50,7 @@
 %</driver>
 % \fi
 %
-% \CheckSum{1630}
+% \CheckSum{1633}
 %
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -212,23 +212,28 @@
 %
 % \subsection{Section headings, tags, and instructions}
 %
-% \DescribeMacro{\heinstructions} When the \verb|showinstructions|
-% options is passed to the document class, the \cs{heinstructions}
-% macro prints instructions from the official EC template.  These
-% instructions are contained in files distributed with the
-% \textsf{heria} class; the macro's sole argument is used to construct
-% the name of one of these files.  To suppress printing of individual
-% instructions, you can simply remove or comment out the corresponding
-% \cs{heinstructions} macro.
+% \DescribeMacro{\heinstructions}\DescribeMacro{\heinstruction*}
+% When the \verb|showinstructions| options is passed to the document
+% class, the \cs{heinstructions} macro prints instructions from the
+% official EC template.  These instructions are contained in files
+% distributed with the \textsf{heria} class; the macro's sole
+% mandatory argument is used to construct the name of one of these
+% files.  The macro sets the instructions in a blue-tinted box with a
+% blue border; the starred variant \cs{heinstructions*} omits the box.
 %
-% \DescribeMacro{\opentag}\DescribeMacro{\closetag} Versions of the official
-% Part~B template up to and including 4.0 include a number of ``tags''
-% that are used for the EC's ``internal processing of information,
-% mostly for statistical gathering.''  The \cs{opentag} and
-% \cs{closetag} macros are used to emit the tags at the appropriate
-% places in the proposal, and so should be left in their original
-% positions in the skeleton proposal.  The EC asks that proposal
-% authors ``not move, delete, re-order, or alter tags in any way''.
+% To suppress printing of individual instructions, you can simply
+% remove or comment out the corresponding \cs{heinstructions}\slash
+% \cs{heinstructions*} macro.
+%
+% \DescribeMacro{\opentag}\DescribeMacro{\closetag} Versions of the
+% official Part~B template up to and including 4.0 include a number of
+% ``tags'' that are used for the EC's ``internal processing of
+% information, mostly for statistical gathering.''  The \cs{opentag}
+% and \cs{closetag} macros are used to emit the tags at the
+% appropriate places in the proposal, and so should be left in their
+% original positions in the skeleton proposal.  The EC asks that
+% proposal authors ``not move, delete, re-order, or alter tags in any
+% way''.
 %
 % \DescribeMacro{\section}\DescribeMacro{\subsection}\DescribeMacro{\subsubsection}
 % These three macros take a mandatory argument specifying the title of
@@ -265,18 +270,34 @@
 %
 % \subsection{Summary tableau}
 %
-% \DescribeEnv{summarycanvas} \DescribeEnv{summarybox} Proposals must
+% \DescribeEnv{summarycanvas}\DescribeEnv{summarybox} Proposals must
 % include a summary tableau of six boxes that briefly describe the
 % project's specific needs; expected results; dissemination,
 % exploitation, and communication measures; target groups; outcomes;
-% and impacts.  The \verb|summarycanvas| and \verb|summaryenv|
+% and impacts.  The \verb|summarycanvas| and \verb|summarybox|
 % environments are provided for this purpose.  Each \verb|summarybox|
 % environment typesets a shaded box headed by its mandatory argument.
 % Three such boxes can be grouped side by side into a single
-% \verb|summarycanvas| environment.  The skeleton proposal
-% demonstrates how all six boxes can be placed in a floating figure on
-% a single landscape page, though other arrangements seem to be
-% permissible.
+% \verb|summarycanvas| environment.
+% 
+% \DescribeEnv{SidewaysFigure} The official Part~B template uses
+% landscape orientation to set the summary tableau.  The
+% \verb|SidewaysFigure| environment can be used to replicate this
+% formatting in your proposal.  If both your \verb|summarycanvas|
+% environments fit on a single page, then you can wrap them in a
+% single \verb|SidewaysFigure| environment.  Otherwise, you can wrap
+% each \verb|summarycanvas| in its own \verb|SidewaysFigure|
+% environment to put them on separate pages.
+%
+% \verb|SidewaysFigure| puts its contents in a floating figure, which
+% avoids wasting space when the material preceding the summary tableau
+% doesn't end at the bottom of a page.  The skeleton proposal
+% demonstrates how such a floating summary tableau can be referenced
+% in the relevant subsection of the Impact section.  It also
+% demonstrates how, using the \cs{ContinuedFloat} command of the
+% \textsf{caption} package, the summary tableau can be assigned a
+% single figure number even when it is split across two
+% \verb|SidewaysFigure| environments.
 %
 % \subsection{Work packages and deliverables}
 %
@@ -399,10 +420,10 @@
 % the order of the \cs{participant} and \cs{subcontractingcost}
 % macros.
 %
-% \bigskip
+% \medskip
 %
-% The following macros are relevant only for those proposals that use
-% versions of the official Part~B template from 5.1 onward:
+% \noindent The following macros are relevant only for those proposals
+% that use versions of the official Part~B template from 5.1 onward:
 %
 % \DescribeMacro{\equipmentcost} This macro declares an equipment cost
 % (for the ``Purchase costs'' tables). It takes three mandatory
@@ -418,10 +439,11 @@
 % grouped by participant and then output according to the order of the
 % \cs{participant} and \cs{equipmentcost} macros.
 %
-% \bigskip
+% \medskip
 %
-% The following macros are relevant only for those proposals that use
-% versions of the official Part~B template up to and including 4.0:
+% \noindent The following macros are relevant only for those proposals
+% that use versions of the official Part~B template up to and
+% including 4.0:
 %
 % \DescribeMacro{\purchasecost} This macro declares the purchase costs
 % for a participant.  It takes eight mandatory arguments:
@@ -569,20 +591,27 @@
 % \subsection{Version history}
 %
 % \begin{description}
-% \item[v5.1.1.0alpha (2026-08-16)] Add support for version 5.1 of the
+% \item[v5.1.1.0 (2026-08-16)] Added support for version 5.1 of
+%   the official Part~B template.
+%
+%   Removed licence notice from skeleton proposals.
+%
+%   Added example texts to the summary tableau.
+%
+%   Added documentation for the \verb|SidewaysFigure| environment.
+%
+%   Provided skeleton proposals for each supported version of the
 %   official Part~B template.
 %
-%   Remove licence notice from skeleton proposals.
-%
-% \item[v4.0.1.0 (2025-08-16)] Add support for version 4.0 of the
+% \item[v4.0.1.0 (2025-08-16)] Added support for version 4.0 of the
 %   official Part~B template.
-% \item[v3.4.1.3 (2024-09-03)] Fix a bug where the person-months in
+% \item[v3.4.1.3 (2024-09-03)] Fixed a bug where the person-months in
 %   Table 3.1a were doubled.
-% \item[v3.4.1.2 (2024-09-03)] Fix a bug where the column totals in
+% \item[v3.4.1.2 (2024-09-03)] Fixed a bug where the column totals in
 %   Table 3.1f were doubled.
-% \item[v3.4.1.1 (2024-08-14)] Update documentation with a reference
+% \item[v3.4.1.1 (2024-08-14)] Updated documentation with a reference
 %   to the \emph{TUGboat} paper on \textsf{heria}.
-% \item[v3.4.1.0 (2024-07-14)] Add support for version 3.4 of the
+% \item[v3.4.1.0 (2024-07-14)] Added support for version 3.4 of the
 %   official Part~B template and the \cs{templateversion} macro for
 %   backward compatibility with earlier versions.
 % \item[v3.2.1.0 (2023-12-04)] Initial release.
@@ -1600,6 +1629,7 @@
 \newenvironment{summarycanvas}{%
   \begin{tcbraster}[%
     raster columns=3,
+    raster equal height
     ]%
 }{%
   \end{tcbraster}%
@@ -1608,7 +1638,6 @@
   \begin{tcolorbox}[%
     colframe=summaryblue,
     colbacktitle=summaryblue,
-    %height fill,
     fonttitle=\bfseries\sffamily,
     halign title=center,
     title={#1}
@@ -1851,13 +1880,20 @@
   \end{tcolorbox}%
   }
 
-\newcommand{\heinstructions}[1]{%
+\NewDocumentCommand{\heinstructions}{sm}{%
   \ifheria@showinstructions%
-  \begin{instructions}%
-    \urlstyle{sf}%
-    \def\do@url@hyp{\do\-}%
-    \input{hi-#1}%
-  \end{instructions}%
+    \IfBooleanTF{#1}%
+    {%
+      \sffamily%
+      \input{hi-#2}%
+    }%
+    {%
+      \begin{instructions}%
+        \urlstyle{sf}%
+        \def\do@url@hyp{\do\-}%
+        \input{hi-#2}%
+      \end{instructions}%
+    }%
   \fi%
 }
 %    \end{macrocode}
@@ -2576,6 +2612,127 @@ sub-contracted).
 key elements of your project impact pathway and of the measures to
 maximise its impact.
 %</hi-summary>
+%<*hi-summary-specificneeds>
+\textcolor{summaryblue}{\emph{What are the specific needs that
+    triggered this project?}}\\
+
+\textcolor{summaryblue}{Example 1}\\
+Most airports use process flow-oriented models based on static
+mathematical values limiting the optimal management of passenger flow
+and hampering the accurate use of the available resources to
+the actual demand of passengers.\\
+
+\textcolor{summaryblue}{Example 2}\\
+Electronic components need to get smaller and lighter to match the
+expectations of the end-users. At the same time there is a problem of
+sourcing of raw materials that has an environmental impact.
+%</hi-summary-specificneeds>
+%<*hi-summary-expectedresults>
+\textcolor{summaryblue}{\emph{What do you expect to generate by the
+    end of the project?}}\\
+
+\textcolor{summaryblue}{Example 1}\\
+\textbf{Successful large-scale demonstrator}: Trial with 3 airports of
+an advanced forecasting system for proactive airport passenger flow
+management.\\
+
+\textbf{Algorithmic model}:\\
+Novel algorithmic model for proactive airport passenger flow
+management.\\
+
+\textcolor{summaryblue}{Example 2}\\
+Publication of a \textbf{scientific discovery on transparent
+  electronics}.\\
+
+\textbf{New product}: More sustainable electronic circuits.\\
+
+\textbf{Three PhD students trained}.
+%</hi-summary-expectedresults>
+%<*hi-summary-decmeasures>
+\textcolor{summaryblue}{\emph{What dissemination, exploitation and
+    communication measures will you apply to the results?}}\\
+
+\textcolor{summaryblue}{Example 1}\\
+\textbf{Exploitation}: Patenting the algorithmic model.\\
+
+\textbf{Dissemination towards the scientific community and airports}:
+Scientific publication with the results of the large-scale
+demonstration.\\
+
+\textbf{Communication towards citizens}: An event in a shopping mall
+to show how the outcomes of the action are relevant to our
+everyday lives.\\
+
+\textcolor{summaryblue}{Example 2}\\
+\textbf{Exploitation of the new product}: Patenting the new product;
+Licencing to major electronic companies.\\
+
+\textbf{Dissemination towards the scientific community and industry}:
+Participating at conferences; Developing a platform of material
+compositions for industry; Participation at EC project portfolios to
+disseminate the results as part of a group and maximise the visibility
+vis-à-vis companies.
+%</hi-summary-decmeasures>
+%<*hi-summary-targetgroups>
+\textcolor{summaryblue}{Who will use or further up-take the results of
+  the project? Who will benefit from the results of the
+  project?}\\
+
+\textcolor{summaryblue}{Example 1}\\
+9 European airports: Schiphol, Brussels airport, etc.\\
+
+\textbf{The European Union aviation safety agency}.\\
+
+\textbf{Air passengers (indirect)}.\\
+
+\textcolor{summaryblue}{Example 2}\\
+\textbf{End-users}: consumers of electronic devices.\\
+
+\textbf{Major electronic companies}: Samsung, Apple, etc.\\
+
+\textbf{Scientific community} (field of transparent electronics).
+%</hi-summary-targetgroups>
+%<*hi-summary-outcomes>
+\textcolor{summaryblue}{\emph{What change do you expect to see after
+    successful dissemination and exploitation of project results
+    to the target group(s)?}}\\
+
+\textcolor{summaryblue}{Example 1}\\
+\textbf{Up-take by airports}: 9 European airports adopt the advanced
+forecasting system demonstrated during the project.\\
+
+\textcolor{summaryblue}{Example 2}\\
+\textbf{High use of the scientific discovery published} (measured with
+the relative rate of citation index of project publications).\\
+
+A \textbf{major electronic company} (Samsung or Apple)
+\textbf{exploits\slash uses the new product} in their manufacturing.
+%</hi-summary-outcomes>
+%<*hi-summary-impacts>
+\textcolor{summaryblue}{\emph{What are the expected wider scientific,
+    economic and societal effects of the project contributing to the
+    expected impacts outlined in the
+    respective destination in the work programme?}}\\
+
+\textcolor{summaryblue}{Example 1}\\
+\textbf{Scientific}: New breakthrough scientific discovery on
+passenger
+forecast modelling.\\
+
+\textbf{Economic}: Increased airport efficiency Size: 15\% increase of
+maximum passenger capacity in European
+airports, leading to a 28\% reduction in infrastructure expansion costs.\\
+
+\textcolor{summaryblue}{Example 2}\\
+\textbf{Scientific}: New breakthrough scientific discovery on
+transparent electronics.\\
+
+\textbf{Economic/Technological}: A new market for touch enabled
+electronic devices.\\
+
+\textbf{Societal}: Lower climate impact of electronics manufacturing
+(including through material sourcing and waste management).
+%</hi-summary-impacts>
 %<*hi-tables>
 \twarn \emph{Use plain text for the tables in section~\ref{sec:workplan}. If the proposal is
 invited to start Grant Agreement preparation, these tables will have to
@@ -2724,6 +2881,8 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 %<4.0>\templateversion{4.0}
 %<5.1>\templateversion{5.1}
 
+\usepackage{caption}
+
 \title{Skeleton Horizon Europe Proposal}
 \callname{insert call name}
 \callidentifier{HORIZON-XX0-0000-XXXXX-00-XXXXX}
@@ -2799,31 +2958,46 @@ participants. Deliverables linked to each WP are listed in table~3.1c
 
 \heinstructions{measures}
 
+%<3.2|3.3|3.4|4.0>\closetag{COM-DIS-VIS-CDV}
+
 %<3.2|3.3|3.4|4.0>\subsection{Summary}\label{sec:summary}
 %<5.1>\subsection{Summary}[][][(OPTIONAL~-- Please remove this section if not used)]\label{sec:summary}
 
 \heinstructions{summary}
 
-%<3.2|3.3|3.4|4.0>\closetag{COM-DIS-VIS-CDV}
+\noindent Figure~\ref{fig:impact} on
+pages~\pageref{fig:impact}--\pageref{fig:impact2} presents a tableau
+summarising the project's impact.
 
 \begin{SidewaysFigure}
 \begin{summarycanvas}%
   \begin{summarybox}{SPECIFIC NEEDS}
+    \heinstructions*{summary-specificneeds}
   \end{summarybox}%
   \begin{summarybox}{EXPECTED RESULTS}
+    \heinstructions*{summary-expectedresults}
   \end{summarybox}%
   \begin{summarybox}{D \& E \& C MEASURES}
-  \end{summarybox}%
-\end{summarycanvas}%
-\begin{summarycanvas}%
-  \begin{summarybox}{TARGET GROUPS}
-  \end{summarybox}%
-  \begin{summarybox}{OUTCOMES}
-  \end{summarybox}%
-  \begin{summarybox}{IMPACTS}
+    \heinstructions*{summary-decmeasures}
   \end{summarybox}%
 \end{summarycanvas}%
 \caption{Impact summary tableau}\label{fig:impact}
+\end{SidewaysFigure}
+
+\begin{SidewaysFigure}
+\begin{summarycanvas}%
+  \begin{summarybox}{TARGET GROUPS}
+    \heinstructions*{summary-targetgroups}
+  \end{summarybox}%
+  \begin{summarybox}{OUTCOMES}
+    \heinstructions*{summary-outcomes}
+  \end{summarybox}%
+  \begin{summarybox}{IMPACTS}
+    \heinstructions*{summary-impacts}
+  \end{summarybox}%
+\end{summarycanvas}%
+\ContinuedFloat%
+\caption{Impact summary tableau (continued)}\label{fig:impact2}
 \end{SidewaysFigure}
 
 %<3.2|3.3|3.4|4.0>\section{Quality and efficiency of the implementation}[QUA-LIT-QL,WRK-PLA-WP][IMP-ACT-IA]\label{sec:quality}
